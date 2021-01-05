@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>순회(탐색) 메소드</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(function(){
+                // h4 태그 중 짝수 인덱스
+                $('h4:even').css({'background':'black', 'color':'white'});
+                // filter()메소드
+                $('h4').filter(':even').css({'background':'orangered', 'color':'white'});
+
+                // 함수를 매개변수로 하는 filter()메소드 사용
+                $('h4').filter(function(index){
+                    return index %2 == 1;
+                }).css({'background':'yellowgreen', 'color':'black'});
+
+                // 선택된 요소 중 제일 처음에 있는 요소 리턴
+                $('h4').first().css('font-size', '1.5em');
+
+                // 선택된 요소 중 제일 마지막에 있는 요소 리턴
+                $('h4').last().text("마지막 요소");
+
+                // 인덱스 번호와 일치하는 요소만 리턴
+                $('h4').eq(3).text("eq()로 선택됨");
+
+                // 인자값과 일치하지 않는 요소만 리턴
+                $('h4').not('.test').css({'background':'yellow','color':'black'});
+            });
+        </script>
+    </head>
+    <body>
+        <h1>순회(탐색) 메소드</h1>
+        <hr>
+        <h3>filtering 메소드</h3>
+        <h4 class="test">test-1</h4>
+        <h4 class="test">test-2</h4>
+        <h4 class="test">test-3</h4>
+        <h4 class="test">test-4</h4>
+        <h4>test-5</h4>
+        <h4 class="test">test-6</h4>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Content 메소드</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous">
+        </script>
+    </head>
+    <body>
+        <h1>Content 메소드</h1>
+        <hr>
+        <h3>html() 메소드</h3>
+        <h1 id="test1"><a>네이버로 이동</a></h1>
+        <h1 id="test2"></h1>
+        <script>
+            $(function(){
+                var temp = $('#test1').html();
+                console.log(temp);
+
+                $('#test2').html(temp);
+                // temp에 #test1의 html 속성들이 다 적용할 수 있어서 a태그도 사용가능
+                $('#test2').children('a').attr('href','http://www.naver.com');
+            });
+        </script>
+        <br>
+        <div class="test"></div>
+        <div class="test"></div>
+        <div class="test"></div>
+        <script>
+            $(function(){
+                $('.test').html(function(index,html){
+                    $(this).html("<h1>test"+index+"</h1>");
+                    console.log(index, html);
+                    $(this).html(function(index,html){
+                        console.log(index,html);
+                    });
+                });
+            });
+        </script>
+        <hr>
+        <h3>text() 메소드</h3>
+        <h1 id="test3"><a>구글로 이동</a></h1>
+        <h1 id="test4"></h1>
+        <script>
+            $(function(){
+                var temp = $('#test3').text();
+                console.log(temp);
+                $('#test4').text(temp);
+            });
+        </script>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <script>
+            $(function(){
+                $('.test2').text(function(index, text){
+                    $(this).text("<h1>test"+index+"</h1>");
+                    $(this).text(function(index,text){
+                        console.log(text);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

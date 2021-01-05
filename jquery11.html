@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>속성 메소드</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous">
+        </script>
+        <style>
+            .first {
+                color : red;
+            }
+            .second {
+                color : blue;
+            }
+            .third {
+                color : orange;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>속성 메소드</h1>
+        <hr>
+        <h3>attr() 메소드</h3>
+        <p>문서 객체의 특정 속성값을 알아내거나 속성을 추가할 때 사용</p>
+        <img src="../images/city1.PNG" width="400px" height="300px">
+        <script>
+            $(function(){
+                // 속성명에 해당하는 속성값을 리턴
+                var img = $('img').attr('src');
+                console.log('사진 경로 : '+img);
+
+                // 속성명에 해당하는 속성 값 변경
+                $('img').attr('src','../images/flower2.PNG');
+
+                // 함수를 통해 인덱스와 value를 활용
+                $('img').attr('src',function(index,value){
+                    console.log(index, value);
+                });
+
+                // 객체를 통해 여러 속성을 설정
+                $('img').attr({'width':'100px','height':'50px'});
+
+                // 객체의 속성을 제거
+                $('img').removeAttr('width').removeAttr('height');
+            });
+        </script>
+        <hr>
+        <h3>css() 메소드</h3>
+        <p>문서 객체의 스타일을 검사하거나 변경할 때 사용</p>
+        <h1 class="first">test-0</h1>
+        <h1 class="second">test-1</h1>
+        <h1 class="third">test-2</h1>
+        <script>
+            $(function(){
+                // 속성명에 해당하는 속성값을 리턴
+                var color = $('.first').css('color');
+                console.log(color);
+
+                // 속성명에 해당하는 속성 값 변경
+                $('.first').css('color','green');
+
+                // 함수를 통해 인덱스와 value를 활용
+                $('h1').css('color',function(index,value){
+                    console.log(index, value);
+                });
+
+                // 객체를 통해 여러 속성을 설정
+                $('.first').css({'font-size':'2em','background':'orange'});
+
+                // 속성 제거
+                $('.first').css('color','inherit');
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>객체 생성 및 제거</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous">
+        </script>
+        <style>
+            .item {
+                width: 200px;
+                height: 200px;
+                display: inline-block;
+                margin: 5px;
+            }
+            #item1 {
+                background-color: yellowgreen;
+            }
+            #item2 {
+                background-color: cyan;
+            }
+            #item3 {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>객체 생성 및 제거</h1>
+        <hr>
+        <h3>삽입 메소드 part1</h3>
+        <p>
+            $(A).appendTo(B) : A를 B의 요소 내 뒷부분에 추가 <br>
+            $(A).prependTo(B) : A를 B의 요소 내 앞부분에 추가 <br>
+            $(A).insertAfter(B) : A를 B의 요소 뒤에 추가 <br>
+            $(A).insertBefore(B) : A를 B의 요소 앞에 추가 <br>
+        </p>
+        <h1 id="test1"><label>test1</label></h1>
+        <h1 id="test2"><label>test2</label></h1>
+        <h1 id="test3"><label>test3</label></h1>
+        <h1 id="test4"><label>test4</label></h1>
+        <script>
+            $(function(){
+                $('<label>테스트1</label>').appendTo($('#test1'));
+                $('<label>테스트2</label>').prependTo($('#test2'));
+                $('<label>테스트3</label>').insertAfter($('#test3'));
+                $('<label>테스트4</label>').insertBefore($('#test4'));
+            });
+        </script>
+        <hr>
+        <h3>삽입메소드 part2</h3>
+        <p>
+            $(A).append(B) : B를 A의 요소 내 뒷부분에 추가 <br>
+            $(A).prepend(B) : B를 A의 요소 내 앞부분에 추가 <br>
+            $(A).After(B) : B를 A의 요소 뒤에 추가 <br>
+            $(A).Before(B) : B를 A의 요소 앞에 추가 <br>
+        </p>
+        <h1 id="test5"><label>test5</label></h1>
+        <h1 id="test6"><label>test6</label></h1>
+        <h1 id="test7"><label>test7</label></h1>
+        <h1 id="test8"><label>test8</label></h1>
+        <script>
+            $('#test5').append('<label>추가테스트5</label>');
+            $('#test6').prepend('<label>추가테스트6</label>');
+            $('#test7').after('<label>추가테스트7</label>');
+            $('#test8').before('<label>추가테스트8</label>');
+        </script>
+        <hr>
+        <h3>객체 복사와 제거 메소드</h3>
+        <p>
+            clone() : html 내부에 있는 요소를 복사하는 메소드<br>
+            remove() : 요스를 삭제하는 메소드(이벤트, 데이터까지 모두 삭제)<br>
+            detach() : 요소를 삭제하는 메소드(이벤트, 데이터는 삭제 안함)<br>
+            empty() : 내용만 삭제하는 메소드
+        </p>
+        <div id="clonetest">
+            <div id="item1" class="item">
+                <button class="copy">복사하기</button>
+                <button class="delete">삭제하기</button>
+            </div>
+            <div id="item2" class="item">
+                <button class="copy">복사하기</button>
+                <button class="delete">삭제하기</button>
+            </div>
+            <div id="item3" class="item">
+                <button class="copy">복사하기</button>
+                <button class="delete">삭제하기</button>
+            </div>
+        </div>
+        <div id="result"></div>
+        <script>
+            $(function(){
+                $('.copy').click(function(){
+                    $(this).parent().clone(true).appendTo($('#result'));
+                });
+
+                $('.delete').click(function(){
+                    // 요스를 삭제하는 메소드(이벤트, 데이터까지 모두 삭제)
+                    $(this).parent().remove();
+
+                    // 요소를 삭제하는 메소드(이벤트, 데이터는 삭제 안함)
+                    // $(this).parent().detach();
+
+                    // 내용만 삭제하는 메소드
+                    // $(this).parent().empty();
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>순회(탐색) 메소드</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous">
+        </script>
+        <style>
+            .wrap, .wrap *{
+                border: 1px solid lightgray;
+                display: block;
+                padding: 5px;
+                margin: 15px;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>순회(탐색) 메소드</h1>
+        <hr>
+        <h3>sideways 메소드</h3>
+        <p>같은 레벨에 있는 요소(형제)를 선택할 수 있는 메소드</p>
+        <div class="wrap">
+        div (parent)
+            <p>p</p>
+            <span>span</span>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <p>p</p>
+        </div>
+        <script>
+            $(function(){
+                // siblings() - 선택된 요소와 같은 레벨에 있는 요소 리턴
+                    // 인자가 있는 경우 인자와 일치하는 요소 리턴
+                $('h2').siblings().css({'color':'red', 'border':'2px solid red'});
+                $('h2').siblings('p').css({'color':'orange', 'border':'2px solid orange'});
+
+                // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 다음 한 개의 요소 리턴
+                // $('h2').next().css({'color':'blue', 'border':'2px solid blue'});
+
+                // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 다음 모든 요소 리턴
+                // $('h2').nextAll().css({'font-size':'3em'});
+
+                // 선택된 요소부터 인자 범위까지의 같은 레벨의 모든 요소 리턴(다음 요소)
+                // $('h2').nextUntil('p').css('border','dashed');
+
+                // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 이전 한 개의 요소 리턴
+                // $('h2').prev().css('background','yellow'); 
+
+                // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 이전 모든 요소 리턴
+                // $('h2').prevAll().css('font-size','0.5em'); 
+
+                // 선택된 요소부터 인자 범위까지 같은 레벨의 모든 요소 리턴(이전 요소)
+                // $('h2').prevUntil('p').css('border','dotted'); 
+            });
+        </script>
+        <hr>
+        <h3>is 메소드</h3>
+        <p>선택자로 지정한 범위에 특정한 요소가 존재하는지 찾을 때 사용하는 메소드<br>
+            있으면 true, 없으면 false 반환
+        </p>
+        <h3 class="test">test1</h3>
+        <h3>test2</h3>
+        <h3 class="test">test3</h3>
+        <h3 class="test">test4</h3>
+        <h3>test5</h3>
+        <h3 class="test">test6</h3>
+        <script>
+            $(function(){
+                // $('h3.test').css({'background':'orangered','color':'white'}); // 아래 코드랑 같음
+                $('h3').each(function(){
+                    if($(this).is('.test')){
+                        $(this).css({'background':'orangered','color':'white'});
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
